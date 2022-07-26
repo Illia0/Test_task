@@ -1,0 +1,22 @@
+version: '3'
+services:
+  minio:
+    image: bitnami/minio:latest
+    hostname: minio
+    restart: always
+    environment:
+      - MINIO_ROOT_USER=admin
+      - MINIO_ROOT_PASSWORD=password
+    volumes:
+      - ./minio:/data
+    ports:
+      - 9000:9000
+      - 9001:9001
+
+  server:
+    build: server/
+
+    command: python ./server.py
+
+    ports:
+      - 8080:8080
