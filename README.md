@@ -1,25 +1,25 @@
 # Test_task
 ___
 ## Docker-compose
-Складається із двох контейнерів : minio, python
+It consists of two containers: : minio, python
 ___
 
-## Реалізація
-Я недочитав умову та занадто пізно зрозумів що файли повинні зберігатися у minio, тож не встиг переписати свої скрипти. Вони оптимально працюють, якщо у їх директорії знаходяться папки з файлами :(
+## Realization trouble
+I misread the terms and realized too late that the files must be stored in minio, so I didn't have time to rewrite my scripts. They work if there are folders with files in their directory :(
 
-### Скрипти python:
+### Python Scripts:
 #### main.py
-Скрипт трансформує данні з папки 02-src-data та заповнює файл all_data.csv.
+The script transforms the data from the 02-src-data folder and fills the all_data.csv file.
 
 #### add_data.py
-Скрипт трансформує нові дані з папки new_data та додає їх до файлу all_data.csv. Далі він переносить усі данні з папки new_data у папку 02-src-data. Якщо файли мають однакову назву, то новий файл заміню старий.
+The script transforms the new data from the new_data folder and adds it to the all_data.csv file. Next, it moves all the data from the new_data folder to the 02-src-data folder. If the files have the same name, the new file will replace the old one.
 
 #### server.py
-Скрипт сервера, який приймає HTTP запроси (port:8080) та активує інші скрипти.  
-/ - виводить напис 'Start' на екран.  
-/GET/data - виводить таблицю з усією доступною інформацією. Має фільтрацію за параметрами (is_image_exist, min_age, max_age) за умовою задачі.  
-/POST/data - за замовчуванням активує скрипт main.py. Я додав фільтраційний параметр(add_data), при його значенні "True", 
-запускається скрипт add_data.py.
-/GET/stats - виводить середній вік користувачів, які знаходяться у таблиці.Має фільтрацію за параметрами (is_image_exist, min_age, max_age) за умовою задачі.  
+A server script that accepts HTTP requests (port:8080) and activates other scripts.  
+/ - displays the inscription 'Start' on the screen.  
+/GET/data - displays a table with all available information. Has filtering by parameters (is_image_exist, min_age, max_age) according to the condition of the task.  
+/POST/data - activates the default main.py script. I added a filter parameter (add_data). If the value is "True", the script will run
+add_data.py.  
+/GET/stats - displays the average age of users who are in the table. It has filtering by parameters (is_image_exist, min_age, max_age) according to the condition of the task.  
 
 ___
